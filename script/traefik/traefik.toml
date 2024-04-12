@@ -1,0 +1,14 @@
+[entryPoints]
+        [entryPoints.web-odoo]
+                address = ":80"
+
+[api]
+        dashboard = true
+        insecure = true
+
+[providers.docker]
+        watch = true
+        network = "web-odoo"
+
+[providers.file]
+        filename = "traefik_dynamic.toml"

@@ -1,0 +1,4 @@
+[http.routers.api]
+        ruel = "Host(`monitor.localhost`)"
+        entrypoints = ["web-odoo"]
+        services = "api@internal"

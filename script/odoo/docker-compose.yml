@@ -1,0 +1,25 @@
+version: '3.1'
+
+networks:
+  web-odoo:
+    external: true
+
+services:
+  odoo:
+    container_name: odoo_test
+    image: odoo:15.0
+    ports:
+      - "8069:8069"
+    volumes:
+      - /home/user/odoo/config:/etc/odoo
+      - odoo-web-data:/var/lib/odoo
+    networks:
+      - "web-odoo"
+    restart: always
+    labels:
+      - traefik.http.routers.odoo_test.rule=Host(`odoo.localhost`)
+      - traefik.port=80
+    command: odoo -i base
+
+volumes:
+  odoo-web-data:
